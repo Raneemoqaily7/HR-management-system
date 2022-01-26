@@ -3,54 +3,69 @@ function Employee(employeeID,fullName,department,level,salary) {
   this.fullName=fullName;
   this.department=department;
   this.level=level;
-  this.imgspath=`./imgs/empl.jpeg`;
   this.salary=salary
+}
+//helper Function
+
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+ } //The maximum is exclusive and the minimum is inclusive
+
+//prototype function to calculate salary without tax
+
+Employee.prototype.netSalary= function (min,max){
  
+  if(this.level=="Senior"){
+      let random = getRandomNumber(1500,2000)
+      return this.salary=random;
+  }else if(this.level=="Midsenior"){
+    let random = getRandomNumber(1000,1500)
+    return this.salary=random;
 
+    }else if(this.level=="Junior"){
+      let random = getRandomNumber(500,1000)
+      return this.salary=random;
+    }
 }
+////prototype function to calculate salary with tax
 
-Employee.prototype.random = function (){
-   { 
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
+Employee.prototype.netSalarytax= function (min,max){
+ 
+  if(this.level=="Senior"){
+      let random = getRandomNumber(1500,2000)
+      return this.salary=random-(0.075*random);
+  }else if(this.level=="Midsenior"){
+    let random = getRandomNumber(1000,1500)
+    return this.salary=random-(0.075*random);
 
+    }else if(this.level=="Junior"){
+      let random = getRandomNumber(500,1000)
+      return this.salary=random-(0.075*random);
+    }
 }
-
-function eSalary(level){
-  if(level=="Senior"){
-      return random(1500,2000);
-  }else if(level=="Midsenior"){
-      return random(1000,1500);
-  }else if(level=="Junior"){
-   return random(500,1000);
-
-  }
-}
-Employee1.random();
-Employee2.random();
-Employee3.random();
-Employee4.random();
-Employee5.random();
-Employee6.random();
-Employee7.random();
-
-function taxPersent(salary){
-  return salary*75*100;
-}
+let Employee1=new Employee(1000,"Ghazi Samer","Administration","Senior");
+let Employee2= new Employee (1001,"Lana Ali	","Finance","Senior");
+let Employee3= new Employee (1002,"Tamara Ayoub	","Marketing	","Senior");
+let Employee4= new Employee(1003,"Safi Walid	","Administration","Midsenior");
+let Employee5= new Employee(1004,"Omar Zaid	","Development	","Senior");
+let Employee6= new Employee (1005,"Rana Saleh	","Development","Junior");
+let Employee7= new Employee (1006,"Hadi Ahmad	","Finance","Midsenior");
 
 
+Employee1.netSalarytax()
+Employee2.netSalarytax()
+Employee3.netSalarytax()
+Employee4.netSalarytax()
+Employee5.netSalarytax()
+Employee6.netSalarytax()
+Employee7.netSalarytax()
 
-let Employee1=new Employee(1000,"Ghazi Samer","Administration,senior",eSalary);
-let Employee2= new Employee (1001,"Lana Ali	","Finance","Senior",eSalary);
-let Employee3= new Employee (1002,"Tamara Ayoub	","Marketing	","Senior",eSalary);
-let Employee4= new Employee(1003,"Safi Walid	","Administration","Mid-Senior",eSalary);
-let Employee5= new Employee(1004,"Omar Zaid	","Development	","Senior",eSalary);
-let Employee6= Employee (1005,"Rana Saleh	","Development","Junior",eSalary);
-let Employee7= new Employee (1006,"Hadi Ahmad	","Finance","Mid-Senior",eSalary);
 
 
 Employee.prototype.render=function(){
-  document.write(`Employee name is${this.fullName} and salary is${this.salary}`)
+  document.write(`Employee name is${this.fullName}     and salary is${this.salary} <br>`)
 }
 Employee1.render();
 Employee2.render();
