@@ -1,144 +1,142 @@
-function Employee(fullName,department,level,imgUrl,employeeID) {
-  this.fullName=fullName;
-  this.department=department;
-  this.level=level;
-  this.imagepath=imgUrl;
-  this.employeeID=employeeID;
+function Employee(fullName, department, level, imgUrl, employeeID, salary) {
+
+  this.fullName = fullName;
+  this.department = department;
+  this.level = level;
+  this.imagepath = imgUrl;
+  this.employeeID = employeeID;
+  this.salary = salary
+
 }
 
-const Ghazi=new Employee("Ghazi","Administration","Senior","assest/Ghazi.jpg ",1000);
-const Lana= new Employee ("Lana","Finance","Senior","assest/Lana.jpg",1001);
-const Tamara= new Employee ("Tamara	","Marketing	","Senior","assest/Tamara.jpg",1002);
-const Safi= new Employee("Safi	","Administration","Midsenior","assest/Safi.jpg",1003);
-const Omar= new Employee("Omar","Development	","Senior","assest/Omar.jpg",1004);
-const Rana= new Employee ("Rana	","Development","Junior","assest/Rana.jpg",1005);
-const Hadi= new Employee ("Hadi 	","Finance","Midsenior","assest/Hadi.jpg",1006);
+const Ghazi = new Employee("Ghazi", "administration", "Senior", "assest/Ghazi.jpg ", 1000);
+const Lana = new Employee("Lana", "Finance", "Senior", "assest/Lana.jpg", 1001);
+const Tamara = new Employee("Tamara	", "Marketing", "Senior", "assest/Tamara.jpg", 1002);
+const Safi = new Employee("Safi	", "administration", "Midsenior", "assest/Safi.jpg", 1003);
+const Omar = new Employee("Omar", "Development", "Senior", "assest/Omar.jpg", 1004);
+const Rana = new Employee("Rana	", "Development", "Junior", "assest/Rana.jpg", 1005);
+const Hadi = new Employee("Hadi 	", "Finance", "Midsenior", "assest/Hadi.jpg", 1006);
 
-//helper Function
-
-// function getRandomNumber(min, max) {
-//   min = Math.ceil(min);
-//   max = Math.floor(max);
-//   return Math.floor(Math.random() * (max - min) + min);
-//  } //The maximum is exclusive and the minimum is inclusive
-
-//prototype function to calculate salary without tax
-
-// Employee.prototype.netSalary= function (min,max){
- 
-//   if(this.level=="Senior"){
-//       let random = getRandomNumber(1500,2000)
-//       return this.salary=random;
-//   }else if(this.level=="Midsenior"){
-//     let random = getRandomNumber(1000,1500)
-//     return this.salary=random;
-
-//     }else if(this.level=="Junior"){
-//       let random = getRandomNumber(500,1000)
-//       return this.salary=random;
-//     }
-// }
-////prototype function to calculate salary with tax
-
-// Employee.prototype.netSalarytax= function (min,max){
- 
-//   if(this.level=="Senior"){
-//       let random = getRandomNumber(1500,2000)
-//       return this.salary=random-(0.075*random);
-//   }else if(this.level=="Midsenior"){
-//     let random = getRandomNumber(1000,1500)
-//     return this.salary=random-(0.075*random);
-
-//     }else if(this.level=="Junior"){
-//       let random = getRandomNumber(500,1000)
-//       return this.salary=random-(0.075*random);
-//     }
-// }
+if (JSON.parse(localStorage.getItem("employees")) == null) {
+  Employee.employees = [Ghazi, Lana, Tamara, Safi, Omar, Rana, Hadi]
+}
+else {
+  Employee.employees = JSON.parse(localStorage.getItem("employees"))
+}
 
 
+// helper Function
 
-// let Ghazi=new Employee("Ghazi","Administration","Senior"+);
-// let lana= new Employee ("Lana","Finance","Senior");
-// let Tamara= new Employee ("Tamara	","Marketing	","Senior");
-// let Safi= new Employee("Safi	","Administration","Midsenior");
-// let Omar= new Employee("Omar","Development	","Senior");
-// let Rana= new Employee ("Rana	","Development","Junior");
-// let Hadi= new Employee ("Hadi 	","Finance","Midsenior");
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+//The maximum is exclusive and the minimum is inclusive
 
+// prototype function to calculate salary without tax
 
-// Employee1.netSalarytax()
-// Employee2.netSalarytax()
-// Employee3.netSalarytax()
-// Employee4.netSalarytax()
-// Employee5.netSalarytax()
-// Employee6.netSalarytax()
-// Employee7.netSalarytax()
+Employee.prototype.netSalary = function (min, max) {
 
-// Employee1.uniqeNumber()
-// Employee2.uniqeNumber()
-// Employee3.uniqeNumber()
-// Employee4.uniqeNumber()
-// Employee5.uniqeNumber()
-// Employee6.uniqeNumber()
-// Employee7.uniqeNumber()
+  if (this.level == "Senior") {
+    let random = getRandomNumber(1500, 2000)
+    return this.salary = random;
+  } else if (this.level == "Midsenior") {
+    let random = getRandomNumber(1000, 1500)
+    return this.salary = random;
+
+  } else if (this.level == "Junior") {
+    let random = getRandomNumber(500, 1000)
+    return this.salary = random;
+  }
+}
+//prototype function to calculate salary with tax
+
+Employee.prototype.netSalarytax = function (min, max) {
+   if (this.level.toLowerCase() == "senior") {
+    let random = getRandomNumber(1500, 2000)
+    return this.salary = random - (0.075 * random);
+  } else if (this.level.toLowerCase() == "midsenior") {
+    let random = getRandomNumber(1000, 1500)
+    return this.salary = random - (0.075 * random);
+
+  } else if (this.level.toLowerCase() == "junior") {
+    let random = getRandomNumber(500, 1000)
+    return this.salary = random - (0.075 * random);
+  } 
+}
 
 
 
-Employee.prototype.render=function(){
-  let mySection=document.getElementById("new");
-  let divEl=document.createElement("div");
-  divEl.setAttribute("id","imgdiv")
+Ghazi.netSalarytax()
+Lana.netSalarytax()
+Tamara.netSalarytax()
+Safi.netSalarytax()
+Omar.netSalarytax()
+Rana.netSalarytax()
+Hadi.netSalarytax()
+
+Employee.prototype.render = function () {
+  let mySection = document.getElementById("new");
+  let divEl = document.createElement("div");
+  divEl.setAttribute("id", "imgdiv")
 
   mySection.appendChild(divEl);
-  let pEl=document.createElement("p")
-  
-  let imgEl=document.createElement("img");
+  let pEl = document.createElement("p")
+
+  let imgEl = document.createElement("img");
   divEl.appendChild(imgEl);
-  imgEl.setAttribute("src",this.imagepath)
-  imgEl.setAttribute("id","employeeImage")
+  imgEl.setAttribute("src", this.imagepath)
+  imgEl.setAttribute("id", "employeeImage")
   divEl.appendChild(pEl);
 
-  pEl.textContent=`Name:${this.fullName} - ID: ${this.employeeID}   `;
+  pEl.textContent = `Name:${this.fullName} - ID: ${this.employeeID}   `;
 
-  let pE2=document.createElement("p")
+  let pE2 = document.createElement("p")
   divEl.appendChild(pE2);
-  pE2.textContent=`Department:${this.department}`;
+  pE2.textContent = `Department:${this.department}`;
 
-  let pE3=document.createElement("p")
+  let pE3 = document.createElement("p")
   divEl.appendChild(pE3);
-  pE3.textContent=`Level: ${this.level}`;
-
-
+  pE3.textContent = `Level: ${this.level}`;
+  let pE4 = document.createElement("p")
+  divEl.appendChild(pE4);
+  pE3.textContent = `${this.salary}`;
 }
 
 
-Ghazi.render()
-Lana.render()
-Tamara.render()
-Safi.render()
-Omar.render()
-Rana.render()
-Hadi.render()
 
+localStorage.setItem("employees", JSON.stringify(Employee.employees))
 
+JSON.parse(localStorage.getItem("employees")).forEach(
 
-uniqeEmployeeID= function(){
+  emp => {
+
+    var e = new Employee(emp.fullName, emp.department, emp.level, emp.imagepath, emp.employeeID, emp.salary)
+    e.render()
+  }
+)
+
+uniqeEmployeeID = function () {
   return Math.floor(1000 + Math.random() * 9000);
 }
 
-let deplformation=document.getElementById("deplform");
-deplformation.addEventListener("submit",addNewInData)
+let deplformation = document.getElementById("deplform");
+deplformation.addEventListener("submit", addNewInData)
 
-function addNewInData(event){
+function addNewInData(event) {
   event.preventDefault()
-let fullName =event.target.name.value;
-let department=event.target.depa.value;
-let level=event.target.level.value;
-let imgUrl=event.target.imgUrl.value;
-let employeeID = uniqeEmployeeID()
-let newEmployee =new Employee(fullName,department,level,imgUrl, employeeID)
-newEmployee.render()
- 
+  let fullName = event.target.name.value;
+  let department = event.target.depa.value;
+  let level = event.target.level.value;
+  let imgUrl = event.target.imgUrl.value;
+  let employeeID = uniqeEmployeeID()
+  let newEmployee = new Employee(fullName, department, level, imgUrl, employeeID)
+  newEmployee.netSalarytax()
+  Employee.employees.push(newEmployee)
+  localStorage.setItem("employees", JSON.stringify(Employee.employees))
+
+  newEmployee.render()
 }
 
 // Employee.prototype.render=function(){
