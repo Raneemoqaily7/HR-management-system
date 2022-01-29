@@ -5,39 +5,60 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  
     <header>
         <nav>
-    <a href="./accounting.html">accounting </a>
+          <ul>
+            <li>
+          <a href="index.html">Home Page </a>
+          </li>
+    
+    <li>   <a href="./accounting.html" >Accounting Page </a>
+      </li>
+    </ul>
+  
 </nav>
 </header>
 <main>
-    <h2>Employee Information</h2>
-    <ul>
-   <li>Employee ID</li> 
+  <h1>Employee Data</h1>
+  
+    <form  id="deplform">
+      <fieldset>
+        <legend>Employee Information</legend>
+        <label for="name" style="color: rgb(13, 163, 163);"">Full Name:</label>
+        <input type="text" name="name" id="name">
+        <br>
+        <br>
+      <label for="department" style="color:rgb(13, 163, 163) ;">Department:</label>
+      <select name="deparments" id="depa" >
+        <option value="adminstration" style="color: rgb(13, 163, 163);">Adminstration</option>
+        <option value="marketing">Marketing</option>
+        <option value="development">Development</option>
+        <option value="finance">Finance</option>
+      </select>
+      <br>
+       <br>
+      <label for="level" style="color: rgb(13, 163, 163);">Level:</label>
+      <select name="level" id="level">
+        <option value="junior">junior</option>
+        <option value="Mid-senior">Mid-senior</option>
+        <option value="senior">Senior</option>
+        
+      </select>
+<br> <br>
+      <label for="imgUrl" style="color: rgb(13, 163, 163);">Image url:</label>
+        <input type="text" id="imgUrl" name="imgUrl">
+        <br><br>
+      <input type="submit" value="add New Data">
+    </fieldset>
+    </form>
 
-<li>Full Name</li>
-<li>Department:</li>
-<ul>
-<li>Administration</li>
-<li>Marketing</li>
-<li>Development</li>
-<li>Finance</li>
-</ul>
-
-<li>Level:</li>
-<ul>
-<li>Junior</li>
-
-<li>Mid-Senior</li>
-<li>Senior</li>
-</ul>
-
-<li>Image URL</li>
-
-
-    </ul>
+    <section id="new">
+      
+    </section>
 
 <script src="./app.js"> </script>
 
